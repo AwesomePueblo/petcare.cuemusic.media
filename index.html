@@ -5,20 +5,32 @@
   <title>Petcare – CueMusic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Calendly widget styles -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
   <main class="container">
     <h1>Petcare</h1>
-    <p class="subtitle">A CueMusic project</p>
+    <p class="subtitle">A Petcare project</p>
 
     <section class="card">
-      <p>This site is live and hosted on GitHub Pages.</p>
-      <p>Content coming soon.</p>
+      <p>Book a dog grooming appointment below.</p>
+
+      <!-- Calendly inline widget -->
+      <div 
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/rachelelisehiggins/30min"
+        style="min-width:320px;height:700px;">
+      </div>
     </section>
 
     <footer>
       <p>© CueMusic</p>
     </footer>
   </main>
+
+  <!-- Calendly widget script -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
