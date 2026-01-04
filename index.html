@@ -4,32 +4,98 @@
   <meta charset="UTF-8" />
   <title>Petcare – CueMusic</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="styles.css" />
 
-  <!-- Calendly widget styles -->
+  <!-- Calendly styles -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #0b1220, #05080f);
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    main {
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      opacity: 0.7;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .card p {
+      margin: 0 0 1.75rem;
+      line-height: 1.5;
+    }
+
+    .book-btn {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0b1220;
+      background: #ffffff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .book-btn:active {
+      transform: scale(0.98);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      opacity: 0.5;
+    }
+  </style>
 </head>
+
 <body>
-  <main class="container">
+  <main>
     <h1>Petcare</h1>
     <p class="subtitle">A Petcare project</p>
 
     <section class="card">
-      <p>Book a dog grooming appointment below.</p>
+      <p>Book a dog grooming appointment.</p>
 
-      <!-- Calendly inline widget -->
-      <div 
-        class="calendly-inline-widget"
-        data-url="https://calendly.com/rachelelisehiggins/30min"
-      </div>
+      <button
+        class="book-btn"
+        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/rachelelisehiggins/30min'}); return false;">
+        Book Appointment
+      </button>
     </section>
 
     <footer>
-      <p>© CueMusic</p>
+      © CueMusic
     </footer>
   </main>
 
-  <!-- Calendly widget script -->
+  <!-- Calendly script -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
