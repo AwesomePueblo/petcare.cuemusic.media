@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Petcare – CueMusic</title>
+  <title>Rachel Higgins Dog Grooming</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Calendly styles -->
@@ -22,32 +22,50 @@
     }
 
     main {
-      max-width: 420px;
+      max-width: 520px;
       margin: 0 auto;
       padding: 3rem 1.5rem 4rem;
+    }
+
+    header {
       text-align: center;
+      margin-bottom: 3rem;
     }
 
     h1 {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       margin-bottom: 0.5rem;
     }
 
     .subtitle {
-      opacity: 0.7;
+      opacity: 0.75;
+      line-height: 1.4;
+    }
+
+    section {
       margin-bottom: 2.5rem;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.06);
       border-radius: 16px;
-      padding: 2rem 1.5rem;
+      padding: 2rem 1.75rem;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
     }
 
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+    }
+
     .card p {
-      margin: 0 0 1.75rem;
-      line-height: 1.5;
+      margin: 0 0 1rem;
+      line-height: 1.55;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
     }
 
     .book-btn {
@@ -61,6 +79,7 @@
       border: none;
       border-radius: 12px;
       cursor: pointer;
+      margin-top: 1.25rem;
     }
 
     .book-btn:active {
@@ -68,6 +87,7 @@
     }
 
     footer {
+      text-align: center;
       margin-top: 3rem;
       font-size: 0.85rem;
       opacity: 0.5;
@@ -77,21 +97,53 @@
 
 <body>
   <main>
-    <h1>Petcare</h1>
-    <p class="subtitle">A Petcare project</p>
+    <header>
+      <h1>Dog Grooming by Rachel Higgins</h1>
+      <p class="subtitle">
+        Reliable, patient dog grooming with a focus on care, comfort, and quality.
+      </p>
+    </header>
 
     <section class="card">
-      <p>Book a dog grooming appointment.</p>
+      <h2>About</h2>
+      <p>
+        I’m Rachel Higgins, a self-employed dog groomer with hands-on experience grooming dogs since 2023.
+        I work independently and take pride in providing calm, attentive care tailored to each dog.
+      </p>
+      <p>
+        I’ve built a loyal base of repeat clients through consistent quality, clear communication,
+        and a practical, patient approach—especially with nervous or high-energy dogs.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Experience & Care</h2>
+      <p>
+        My background includes full-service grooming such as bathing, blow drying, brushing,
+        trimming, and general care. I’m comfortable handling dogs of different sizes and temperaments.
+      </p>
+      <p>
+        I also have years of experience working with children and families, which reflects the level
+        of responsibility, trust, and attention I bring to every appointment.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Book an Appointment</h2>
+      <p>
+        Appointments are scheduled online and availability is always up to date.
+        Select a time that works best for you.
+      </p>
 
       <button
         class="book-btn"
         onclick="Calendly.initPopupWidget({url: 'https://calendly.com/rachelelisehiggins/30min'}); return false;">
-        Book Appointment
+        Book a Grooming Appointment
       </button>
     </section>
 
     <footer>
-      © CueMusic
+      © Rachel Higgins
     </footer>
   </main>
 
