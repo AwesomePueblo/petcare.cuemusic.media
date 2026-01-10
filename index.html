@@ -97,7 +97,7 @@
   </style>
 </head>
 
-<body>
+<body data-theme="dark">
   <main>
     <header>
       <h1>Dog Grooming by Rachel Higgins</h1>
@@ -143,6 +143,36 @@
       </p>
     </section>
 
+    <script>
+  (function () {
+    const buttons = document.querySelectorAll(".theme-switcher button");
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      body.setAttribute("data-theme", savedTheme);
+    }
+
+    function updateActive(theme) {
+      buttons.forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.theme === theme);
+      });
+    }
+
+    updateActive(body.getAttribute("data-theme"));
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        const theme = button.dataset.theme;
+        body.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+        updateActive(theme);
+      });
+    });
+  })();
+</script>
+
+
     
 
     <footer>
@@ -150,7 +180,15 @@
     </footer>
   </main>
 
+<div class="theme-switcher">
+  <button data-theme="dark">Dark</button>
+  <button data-theme="mid">Mid</button>
+  <button data-theme="light">Light</button>
+</div>
+
   <!-- Calendly script -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+
 </body>
 </html>
