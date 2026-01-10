@@ -165,3 +165,176 @@ body {
   font-weight: 600;
 }
 
+/* ---------- Base layout tweaks to match your original dark look ---------- */
+:root {
+  --muted: rgba(255, 255, 255, 0.75);
+}
+
+/* Make dark theme feel like your original (radial gradient, dark UI) */
+body[data-theme="dark"] {
+  --bg: radial-gradient(circle at top, #0b1220, #05080f);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.75);
+  --card: rgba(255, 255, 255, 0.06);
+  --accent: #8b7bff; /* hint of purple */
+}
+
+/* Mid theme: softer dark purple */
+body[data-theme="mid"] {
+  --bg: radial-gradient(circle at top, #2a2340, #151225);
+  --text: #f6f6fb;
+  --muted: rgba(246, 246, 251, 0.78);
+  --card: rgba(255, 255, 255, 0.08);
+  --accent: #a08cff;
+}
+
+/* Light theme: clean, airy */
+body[data-theme="light"] {
+  --bg: #f7f7fb;
+  --text: #1f2933;
+  --muted: rgba(31, 41, 51, 0.65);
+  --card: rgba(255, 255, 255, 0.92);
+  --accent: #6f61ff;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Keep your card look but theme-aware */
+.card {
+  background: var(--card);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  border-radius: 16px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.book-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 650;
+  color: #0b1220;
+  background: #ffffff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 1.25rem;
+}
+
+.book-btn:active {
+  transform: scale(0.98);
+}
+
+.link {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 0.9;
+}
+
+/* ---------- Theme slider (bottom center) ---------- */
+.theme-dock {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: none; /* only pill should be clickable */
+}
+
+.theme-pill {
+  pointer-events: auto;
+  width: min(360px, calc(100vw - 32px));
+  padding: 10px 12px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+body[data-theme="light"] .theme-pill {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.theme-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+  margin: 0 10px 6px;
+  user-select: none;
+}
+
+.theme-range {
+  width: 100%;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 28px;
+  background: transparent;
+}
+
+/* Track */
+.theme-range::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+}
+
+body[data-theme="light"] .theme-range::-webkit-slider-runnable-track {
+  background: rgba(0,0,0,0.12);
+}
+
+/* Thumb */
+.theme-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  margin-top: -6px; /* centers thumb on track */
+  border-radius: 999px;
+  background: var(--accent);
+  border: 2px solid rgba(255,255,255,0.75);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+body[data-theme="light"] .theme-range::-webkit-slider-thumb {
+  border: 2px solid rgba(0,0,0,0.10);
+}
+
+/* Firefox */
+.theme-range::-moz-range-track {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+}
+body[data-theme="light"] .theme-range::-moz-range-track {
+  background: rgba(0,0,0,0.12);
+}
+.theme-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: var(--accent);
+  border: 2px solid rgba(255,255,255,0.75);
+}
+body[data-theme="light"] .theme-range::-moz-range-thumb {
+  border: 2px solid rgba(0,0,0,0.10);
+}
+
+
