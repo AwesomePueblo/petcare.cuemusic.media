@@ -1,6 +1,11 @@
-/* =========================
-   Base Reset
-   ========================= */
+:root {
+  --bg: #f7f7f9;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --accent: #7a6cff; /* soft purple */
+  --accent-soft: #edeaff;
+}
 
 * {
   box-sizing: border-box;
@@ -9,163 +14,83 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  min-height: 100vh;
-}
-
-/* =========================
-   Theme Variables
-   ========================= */
-
-body[data-theme="dark"] {
-  --bg: radial-gradient(circle at top, #0b1220, #05080f);
-  --text: #ffffff;
-  --muted: rgba(255, 255, 255, 0.75);
-  --card-bg: rgba(255, 255, 255, 0.06);
-  --accent: #7a6cff;
-}
-
-body[data-theme="mid"] {
-  --bg: radial-gradient(circle at top, #2a2340, #151225);
-  --text: #f6f6fb;
-  --muted: rgba(246, 246, 251, 0.78);
-  --card-bg: rgba(255, 255, 255, 0.08);
-  --accent: #9b8cff;
-}
-
-body[data-theme="light"] {
-  --bg: #f7f7fb;
-  --text: #1f2933;
-  --muted: rgba(31, 41, 51, 0.65);
-  --card-bg: #ffffff;
-  --accent: #6f61ff;
-}
-
-body {
   background: var(--bg);
   color: var(--text);
 }
 
-/* =========================
-   Layout
-   ========================= */
-
-main {
-  max-width: 520px;
+.container {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 4rem;
+  padding: 2rem 1.25rem 3rem;
 }
 
-header {
+.hero {
   text-align: center;
-  margin-bottom: 2.25rem;
+  margin-bottom: 2rem;
 }
 
-h1 {
-  font-size: 2.3rem;
+.hero h1 {
+  font-size: 2.25rem;
   margin-bottom: 0.5rem;
 }
 
 .subtitle {
   color: var(--muted);
-  line-height: 1.4;
+  font-size: 1.1rem;
 }
 
-/* Tight, intentional spacing */
-section {
-  margin-bottom: 1.75rem;
+.image-section {
+  margin: 2rem 0;
 }
 
-/* =========================
-   Card
-   ========================= */
+.image-section.subtle {
+  margin-top: 3rem;
+}
+
+.feature-image {
+  width: 100%;
+  border-radius: 14px;
+  display: block;
+}
+
+.reassurance {
+  margin: 2rem 0;
+  background: var(--accent-soft);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.reassurance ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reassurance li {
+  padding: 0.5rem 0;
+  font-weight: 500;
+}
 
 .card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 1.75rem 1.5rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  background: var(--card);
+  border-radius: 18px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
 }
 
-.card h2 {
+.booking h2 {
   margin-top: 0;
-  margin-bottom: 0.75rem;
-  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.card p {
-  margin: 0 0 1rem;
-  line-height: 1.55;
+.calendly {
+  height: 100vh;
 }
-
-.card p:last-child {
-  margin-bottom: 0;
-}
-
-/* =========================
-   Booking Button
-   ========================= */
-
-.book-btn {
-  display: block;
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #0b1220;
-  background: #ffffff;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-top: 1.25rem;
-}
-
-.book-btn:active {
-  transform: scale(0.98);
-}
-
-/* =========================
-   Footer
-   ========================= */
 
 footer {
   text-align: center;
-  margin-top: 2.5rem;
-  font-size: 0.85rem;
-  opacity: 0.5;
-}
-
-/* =========================
-   Theme Toggle (Buttons)
-   ========================= */
-
-.theme-toggle {
-  position: fixed;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.25rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  border-radius: 999px;
-  padding: 0.35rem;
-  z-index: 1000;
-}
-
-.theme-toggle button {
-  background: transparent;
-  border: none;
-  color: var(--text);
-  font-size: 0.8rem;
-  padding: 0.45rem 0.75rem;
-  border-radius: 999px;
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-.theme-toggle button.active {
-  background: var(--accent);
-  color: #0b1220;
-  opacity: 1;
-  font-weight: 600;
+  margin-top: 3rem;
+  color: var(--muted);
+  font-size: 0.9rem;
 }
