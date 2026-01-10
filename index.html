@@ -10,104 +10,22 @@
   <!-- Calendly styles -->
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #0b1220, #05080f);
-      color: #ffffff;
-      min-height: 100vh;
-    }
-
-    main {
-      max-width: 520px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 4rem;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    h1 {
-      font-size: 2.3rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      opacity: 0.75;
-      line-height: 1.4;
-    }
-
-    section {
-      margin-bottom: 2.5rem;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 2rem 1.75rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      margin-bottom: 0.75rem;
-      font-size: 1.4rem;
-    }
-
-    .card p {
-      margin: 0 0 1rem;
-      line-height: 1.55;
-    }
-
-    .card p:last-child {
-      margin-bottom: 0;
-    }
-
-    .book-btn {
-      display: block;
-      width: 100%;
-      padding: 1rem;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #0b1220;
-      background: #ffffff;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      margin-top: 1.25rem;
-    }
-
-    .book-btn:active {
-      transform: scale(0.98);
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 0.85rem;
-      opacity: 0.5;
-    }
-  </style>
+  <!-- Site styles -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body data-theme="dark">
-  <main>
-    <header>
+  <main class="container">
+    <header class="hero">
       <h1>Dog Grooming by Rachel Higgins</h1>
       <p class="subtitle">
         Reliable, patient dog grooming with a focus on care, comfort, and quality.
       </p>
     </header>
 
-    <section class="card">
-      <h2>Book an Appointment</h2>
+    <!-- Booking first (single CTA) -->
+    <section class="card booking">
+      <h2>Book Grooming</h2>
       <p>
         Appointments are scheduled online and availability is always up to date.
         Select a time that works best for you.
@@ -115,10 +33,12 @@
 
       <button
         class="book-btn"
+        type="button"
         onclick="Calendly.initPopupWidget({url: 'https://calendly.com/rachelelisehiggins/grooming'}); return false;">
         Book a Grooming Appointment
       </button>
     </section>
+
     <section class="card">
       <h2>About</h2>
       <p>
@@ -132,7 +52,7 @@
     </section>
 
     <section class="card">
-      <h2>Experience & Care</h2>
+      <h2>Experience &amp; Care</h2>
       <p>
         My background includes full-service grooming such as bathing, blow drying, brushing,
         trimming, and general care. I’m comfortable handling dogs of different sizes and temperaments.
@@ -143,52 +63,68 @@
       </p>
     </section>
 
-    <script>
-  (function () {
-    const buttons = document.querySelectorAll(".theme-switcher button");
-    const body = document.body;
+    <section class="card">
+      <h2>Local Business</h2>
+      <p>
+        Established locally and serving families in the Brentwood area.
+        <a class="link" href="https://maps.app.goo.gl/TukPCGzaKpZAzJBq9" target="_blank" rel="noopener noreferrer">
+          View on Google Maps
+        </a>
+      </p>
+    </section>
 
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      body.setAttribute("data-theme", savedTheme);
-    }
-
-    function updateActive(theme) {
-      buttons.forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.theme === theme);
-      });
-    }
-
-    updateActive(body.getAttribute("data-theme"));
-
-    buttons.forEach(button => {
-      button.addEventListener("click", () => {
-        const theme = button.dataset.theme;
-        body.setAttribute("data-theme", theme);
-        localStorage.setItem("theme", theme);
-        updateActive(theme);
-      });
-    });
-  })();
-</script>
-
-
-    
-
-    <footer>
+    <footer class="footer">
       © Rachel Higgins
     </footer>
   </main>
 
-<div class="theme-switcher">
-  <button data-theme="dark">Dark</button>
-  <button data-theme="mid">Mid</button>
-  <button data-theme="light">Light</button>
-</div>
+  <!-- Theme slider (bottom-center) -->
+  <div class="theme-dock" aria-label="Theme selector">
+    <div class="theme-pill">
+      <div class="theme-labels" aria-hidden="true">
+        <span>Dark</span>
+        <span>Mid</span>
+        <span>Light</span>
+      </div>
+
+      <input
+        id="themeRange"
+        class="theme-range"
+        type="range"
+        min="0"
+        max="2"
+        step="1"
+        value="0"
+        aria-label="Theme"
+      />
+    </div>
+  </div>
 
   <!-- Calendly script -->
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
+  <!-- Theme logic -->
+  <script>
+    (function () {
+      const body = document.body;
+      const range = document.getElementById("themeRange");
+      const themes = ["dark", "mid", "light"];
 
+      function applyTheme(theme) {
+        body.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+      }
+
+      // Load saved theme
+      const saved = localStorage.getItem("theme");
+      const initialTheme = themes.includes(saved) ? saved : "dark";
+      applyTheme(initialTheme);
+      range.value = String(themes.indexOf(initialTheme));
+
+      range.addEventListener("input", () => {
+        applyTheme(themes[Number(range.value)]);
+      });
+    })();
+  </script>
 </body>
 </html>
